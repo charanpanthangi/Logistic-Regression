@@ -2,44 +2,6 @@
 
 Here’s how you can implement Logistic Regression from scratch using Python, focusing on the sigmoid function and the cost function:
 
-```python
-import numpy as np
-import pandas as pd
-from scipy.special import expit  # sigmoid function
-
-# Define the sigmoid function
-def sigmoid(z):
-    return expit(z)  # Using scipy's expit for numerical stability
-
-# Define the logistic regression model
-def logistic_regression(X, y, learning_rate=0.01, num_iterations=1000):
-    m, n = X.shape
-    X = np.c_[np.ones((m, 1)), X]  # Add intercept term
-    theta = np.zeros(n + 1)  # Initialize parameters
-    
-    for _ in range(num_iterations):
-        # Hypothesis function
-        z = X.dot(theta)
-        h = sigmoid(z)
-        
-        # Compute the gradient
-        gradient = (1/m) * X.T.dot(h - y)
-        
-        # Update parameters
-        theta -= learning_rate * gradient
-    
-    return theta
-
-# Example data
-X = np.array([[1, 2], [2, 3], [3, 4], [4, 5]])  # Features
-y = np.array([0, 0, 1, 1])  # Binary target variable
-
-# Train the logistic regression model
-theta_best = logistic_regression(X, y)
-
-# Print the model parameters
-print(f'Intercept and Coefficients: {theta_best}')
-```
 
 ### Explanation of Key Concepts
 
